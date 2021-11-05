@@ -1,38 +1,44 @@
 const { ethers } = require("hardhat");
+require("dotenv").config();
 
 async function main() {
-  const network = await ethers.provider.getNetwork("fuji");
-  const connection = new ethers.providers.JsonRpcProvider(
+  // connect to provider, fuji testnet here
+  const connection = new ethers.getDefaultProvider(
     "https://api.avax-test.network/ext/bc/C/rpc"
   );
-
-  console.log(await connection.getGasPrice());
 
   let Lottery = await ethers.getContractFactory("Lottery");
   let lottery = await Lottery.attach(
     "0x7D51Fdd098e371248eBf07E0E22De0d3F0753248"
   );
+
+  // create wallet from mnemonic
   const wallet = await ethers.Wallet.fromMnemonic(
     "calm candy riot cash carpet wait route smart dice radar useful change"
   );
-  const [owner] = await ethers.getSigners();
-  let ownerSigner = owner.connect(connection);
+
+  const myWallet = new ethers.Wallet(process.env.PRIVATE_KEY);
+
+  let myWalletSigner = myWallet.connect(connection);
   let walletSigner = wallet.connect(connection);
 
   const tx = {
-    from: owner.address,
-    to: wallet.address,
+    from: wallet.address,
+    to: myWallet.address,
     value: ethers.utils.parseUnits("0.1", "ether"),
     gasPrice: connection.getGasPrice(),
-    nonce: connection.getTransactionCount(owner.address, "latest"),
+    nonce: connection.getTransactionCount(wallet.address, "latest"),
     gasLimit: ethers.utils.hexlify(1000000),
   };
 
-  const transaction = await ownerSigner.sendTransaction(tx);
-
-  console.log((await (await wallet.getBalance())._hex).toString());
+  const transaction = await walletSigner.sendTransaction(tx);
   console.log(transaction);
-  console.log((await wallet.getBalance()).toString());
+
+  console.log(await walletSigner.getBalance("latest"));
+  console.log(await myWallet.address);
+  console.log(
+    parseInt(await myWalletSigner.getBalance("latest"), 16) / 10 ** 18
+  );
 
   // console.log(`Contract address: ${lottery.address}`);
   // console.log(`Random Wallet address: ${wallet.address}`);
