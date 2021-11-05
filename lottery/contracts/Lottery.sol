@@ -38,6 +38,10 @@ contract Lottery is VRFConsumerBase, Ownable {
         keyhash = _keyhash;
     }
 
+    function getLotteryState() public view returns (LOTTERY_STATE) {
+        return lottery_state;
+    }
+
     function enter() public payable {
         // 50$ min
         require(lottery_state == LOTTERY_STATE.OPEN);

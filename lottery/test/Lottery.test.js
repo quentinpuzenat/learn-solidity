@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 describe("Lottery", function () {
-  it("Should ckeck that entrance fee is superor than a threshold", async function () {
+  it("Should ckeck that the lottery is started", async function () {
     const Lottery = await ethers.getContractFactory("Lottery");
     const lottery = await Lottery.deploy(
       "0x86d67c3D38D2bCeE722E601025C25a575021c6EA", // price feed address
@@ -12,7 +12,10 @@ describe("Lottery", function () {
       "0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4" // keyhash
     );
     await lottery.deployed();
+    const [owner] = ethers.getSigners();
 
-    expect(await lottery.getEntranceFee()).to.be.above(1000029003475989);
+    await lottery.startLottery();
+
+    expect((await lottery.lottery_state()) === LOTTERY_STATE.OPEN);
   });
 });

@@ -1,17 +1,42 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  let Lottery = await ethers.getContractFactory("Lottery");
-  let lottery = await Lottery.attach(
-    "0x86d67c3D38D2bCeE722E601025C25a575021c6EA",
-    "0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9",
-    "0xa36085F69e2889c224210F603D836748e7dC0088",
-    1000000000000000,
-    "0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4"
+  const network = await ethers.provider.getNetwork("fuji");
+  const connection = new ethers.providers.JsonRpcProvider(
+    "https://api.avax-test.network/ext/bc/C/rpc"
   );
 
-  console.log(`Entrance fee: ${(await lottery.getEntranceFee()).toString()}`);
-  console.log(`USD entry fee: ${(await lottery.usdEntryFee()).toString()}`);
+  console.log(await connection.getGasPrice());
+
+  let Lottery = await ethers.getContractFactory("Lottery");
+  let lottery = await Lottery.attach(
+    "0x7D51Fdd098e371248eBf07E0E22De0d3F0753248"
+  );
+  const wallet = await ethers.Wallet.fromMnemonic(
+    "calm candy riot cash carpet wait route smart dice radar useful change"
+  );
+  const [owner] = await ethers.getSigners();
+  let ownerSigner = owner.connect(connection);
+  let walletSigner = wallet.connect(connection);
+
+  const tx = {
+    from: owner.address,
+    to: wallet.address,
+    value: ethers.utils.parseUnits("0.1", "ether"),
+    gasPrice: connection.getGasPrice(),
+    nonce: connection.getTransactionCount(owner.address, "latest"),
+    gasLimit: ethers.utils.hexlify(1000000),
+  };
+
+  const transaction = await ownerSigner.sendTransaction(tx);
+
+  console.log((await (await wallet.getBalance())._hex).toString());
+  console.log(transaction);
+  console.log((await wallet.getBalance()).toString());
+
+  // console.log(`Contract address: ${lottery.address}`);
+  // console.log(`Random Wallet address: ${wallet.address}`);
+  // console.log(`Owner address: ${owner.address}`);
 }
 
 main()
