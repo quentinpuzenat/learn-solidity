@@ -1,7 +1,41 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/quentin/github/solidity/openzeppelin-tutorial/contracts/Box.sol": {
+    "/Users/quentin/github/learn-solidity/openzeppelin-tutorial/contracts/access-control/Auth.sol": {
+      "lastModificationDate": 1635808314754,
+      "contentHash": "12159fba18648feb029cf54d2f1d7f54",
+      "sourceName": "contracts/access-control/Auth.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Auth"
+      ]
+    },
+    "/Users/quentin/github/learn-solidity/openzeppelin-tutorial/contracts/Box.sol": {
       "lastModificationDate": 1635808531639,
       "contentHash": "1e9fbc08caa192e5d8e46287268e3309",
       "sourceName": "contracts/Box.sol",
@@ -37,41 +71,7 @@
         "Box"
       ]
     },
-    "/Users/quentin/github/solidity/openzeppelin-tutorial/contracts/access-control/Auth.sol": {
-      "lastModificationDate": 1635808314754,
-      "contentHash": "12159fba18648feb029cf54d2f1d7f54",
-      "sourceName": "contracts/access-control/Auth.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Auth"
-      ]
-    },
-    "/Users/quentin/github/solidity/openzeppelin-tutorial/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
+    "/Users/quentin/github/learn-solidity/openzeppelin-tutorial/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
       "lastModificationDate": 1635808495685,
       "contentHash": "4fe56b59ced59d87df6b796758f62895",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
@@ -107,7 +107,7 @@
         "Ownable"
       ]
     },
-    "/Users/quentin/github/solidity/openzeppelin-tutorial/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+    "/Users/quentin/github/learn-solidity/openzeppelin-tutorial/node_modules/@openzeppelin/contracts/utils/Context.sol": {
       "lastModificationDate": 1635808495670,
       "contentHash": "851485d5b925529b1a2f34a0be077891",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
