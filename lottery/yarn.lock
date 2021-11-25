@@ -448,6 +448,15 @@
     "@ethersproject/properties" "^5.5.0"
     "@ethersproject/transactions" "^5.5.0"
 
+"@ethersproject/experimental@^5.5.0":
+  "integrity" "sha512-Q62IjbhlgVmeFHRI6JSU/mZbtVGd8mNgkuIU0IxyTVszUzNblocVctIngAiWm8gGqr/ytj7hN1FRadCRMY4zIA=="
+  "resolved" "https://registry.npmjs.org/@ethersproject/experimental/-/experimental-5.5.0.tgz"
+  "version" "5.5.0"
+  dependencies:
+    "@ethersproject/web" "^5.5.0"
+    "ethers" "^5.5.0"
+    "scrypt-js" "3.0.1"
+
 "@ethersproject/hash@^5.0.4", "@ethersproject/hash@^5.5.0", "@ethersproject/hash@5.5.0":
   "integrity" "sha512-dnGVpK1WtBjmnp3mUT0PlU2MpapnwWI0PibldQEq1408tQBAbZpPidkWoVVuNMOl/lISO3+4hXZWCL3YV7qzfg=="
   "resolved" "https://registry.npmjs.org/@ethersproject/hash/-/hash-5.5.0.tgz"
@@ -3915,7 +3924,7 @@
     "utf8" "^3.0.0"
     "uuid" "^3.3.2"
 
-"ethers@^5.0.0", "ethers@^5.0.1", "ethers@^5.0.2", "ethers@^5.4.5", "ethers@^5.4.7":
+"ethers@^5.0.0", "ethers@^5.0.1", "ethers@^5.0.2", "ethers@^5.4.5", "ethers@^5.4.7", "ethers@^5.5.0":
   "integrity" "sha512-RodEvUFZI+EmFcE6bwkuJqpCYHazdzeR1nMzg+YWQSmQEsNtfl1KHGfp/FWZYl48bI/g7cgBeP2IlPthjiVngw=="
   "resolved" "https://registry.npmjs.org/ethers/-/ethers-5.5.1.tgz"
   "version" "5.5.1"
